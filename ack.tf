@@ -1,7 +1,7 @@
 resource "alicloud_cs_managed_kubernetes" "ack" {
-  name                  = var.ack_name
-  resource_group_id     = alicloud_resource_manager_resource_group.resource_group.id
-  version               = var.ack_k8s_version
+  name              = var.ack_name
+  resource_group_id = alicloud_resource_manager_resource_group.resource_group.id
+  version           = var.ack_k8s_version
   runtime = {
     name    = "containerd"
     version = "1.4.8"
@@ -23,32 +23,32 @@ resource "alicloud_cs_managed_kubernetes" "ack" {
   tags                  = var.ack_tags
 
   addons {
-    name = "terway-eniip"
+    name   = "terway-eniip"
     config = ""
   }
 
 }
 
 resource "alicloud_cs_kubernetes_node_pool" "ack_node_pool_a" {
-  name                         = var.ack_node_pool_name_a
-  cluster_id                   = alicloud_cs_managed_kubernetes.ack.id
-  vswitch_ids                  = [alicloud_vswitch.vswitch_worker_private_a.id]
-  instance_types               = var.ack_node_pool_instance_type_a
-  node_count                   = var.ack_node_pool_count_a
-  system_disk_category         = "cloud_ssd"
-  platform                     = "AliyunLinux"
-  node_name_mode               = var.ack_node_name_pattern # eg. "kubeops,5,node"
-  key_name                     = var.ack_ssh_key_name_a
+  name                 = var.ack_node_pool_name_a
+  cluster_id           = alicloud_cs_managed_kubernetes.ack.id
+  vswitch_ids          = [alicloud_vswitch.vswitch_worker_private_a.id]
+  instance_types       = var.ack_node_pool_instance_type_a
+  node_count           = var.ack_node_pool_count_a
+  system_disk_category = "cloud_ssd"
+  platform             = "AliyunLinux"
+  node_name_mode       = var.ack_node_name_pattern # eg. "kubeops,5,node"
+  key_name             = var.ack_ssh_key_name_a
   management {
-    auto_repair                = true
-    max_unavailable            = 0
-    surge_percentage           = var.ack_node_pool_surge_percent_a
-  } 
-  scaling_config {
-      min_size = var.ack_node_pool_min_size_a
-      max_size = var.ack_node_pool_max_size_a
-      type     = var.ack_node_pool_type_a
+    auto_repair      = true
+    max_unavailable  = 0
+    surge_percentage = var.ack_node_pool_surge_percent_a
   }
-  resource_group_id            = alicloud_resource_manager_resource_group.resource_group.id
-  tags                         = var.ack_node_pool_tags_a
+  scaling_config {
+    min_size = var.ack_node_pool_min_size_a
+    max_size = var.ack_node_pool_max_size_a
+    type     = var.ack_node_pool_type_a
+  }
+  resource_group_id = alicloud_resource_manager_resource_group.resource_group.id
+  tags              = var.ack_node_pool_tags_a
 }
