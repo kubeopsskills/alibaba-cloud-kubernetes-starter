@@ -147,9 +147,36 @@ variable "nat_tags_b" {
   description = "The tags of NAT gateway, zone b"
 }
 
-variable "nat_size" {
+# EIP
+variable "eip_nat_name_a" {
   type        = string
-  description = "The size of the nat gateway"
+  description = "Name of the NAT gateway EIP, zone a"
+}
+
+variable "eip_nat_name_b" {
+  type        = string
+  description = "Name of the NAT gateway EIP, zone b"
+}
+
+variable "eip_nat_tags_a" {
+  type        = map(string)
+  description = " A mapping of tags to assign to NAT gateway EIP, zone a"
+}
+
+variable "eip_nat_tags_b" {
+  type        = map(string)
+  description = " A mapping of tags to assign to the NAT gateway EIP, zone b"
+}
+
+# SNAT
+variable "snat_entry_name_a" {
+  type        = string
+  description = "Name of the SNAT entry, zone a"
+}
+
+variable "snat_entry_name_b" {
+  type        = string
+  description = "Name of the SNAT entry, zone b"
 }
 
 # Route Table
@@ -233,6 +260,11 @@ variable "ack_node_pool_count_a" {
 variable "ack_ssh_key_name_a" {
   description = "The keypair of ssh login cluster node, you have to create it first.  Zone A"
   type        = string
+}
+
+variable "ack_ssh_key_tags_a" {
+  description = "A mapping of tags to assign to the ssh keypair. Zone A"
+  type        = map(string)
 }
 
 variable "ack_node_pool_surge_percent_a" {
