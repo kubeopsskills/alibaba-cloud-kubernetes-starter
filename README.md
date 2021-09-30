@@ -1,8 +1,40 @@
+# Alibaba Cloud Kubernetes Starter Template
+
+This is an Alibaba Cloud Kubernetes Starter Template to let you quickly started using ACK.
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | ~>1.136.0 |
+
+## Getting Started!
+
+To setup a new ACK cluster, you need to clone the git repo
+
+```sh
+$ git clone https://github.com/kubeopsskills/alibaba-cloud-kubernetes-starter.git
+$ cd alibaba-cloud-kubernetes-starter
+```
+
+Prepare your tfvars file [terraform config file] like "demo.tfvars", then run "terraform init" command to initialize terraform module
+
+```sh
+$ terraform init
+```
+
+followed by the below command to verify the config
+
+```sh
+$ terraform plan -var-file=[your tfvars file]
+```
+
+then, run the below command to provision a new ACK cluster
+
+```sh
+$ terraform apply -var-file=[your tfvars file]
+```
+
+After you have provisioned a new ACK cluster, feel free to enjoy using the ACK cluster.
 
 ## Providers
 
