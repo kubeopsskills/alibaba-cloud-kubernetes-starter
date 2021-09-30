@@ -20,6 +20,11 @@ No modules.
 |------|------|
 | [alicloud_cs_kubernetes_node_pool.ack_node_pool_a](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cs_kubernetes_node_pool) | resource |
 | [alicloud_cs_managed_kubernetes.ack](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cs_managed_kubernetes) | resource |
+| [alicloud_ecs_key_pair.ack_ssh_key_a](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ecs_key_pair) | resource |
+| [alicloud_eip_address.nat_gateway_eip_a](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/eip_address) | resource |
+| [alicloud_eip_address.nat_gateway_eip_b](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/eip_address) | resource |
+| [alicloud_eip_association.nat_gateway_eip_a_association](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/eip_association) | resource |
+| [alicloud_eip_association.nat_gateway_eip_b_association](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/eip_association) | resource |
 | [alicloud_nat_gateway.nat_gateway_a](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/nat_gateway) | resource |
 | [alicloud_nat_gateway.nat_gateway_b](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/nat_gateway) | resource |
 | [alicloud_resource_manager_resource_group.resource_group](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/resource_manager_resource_group) | resource |
@@ -31,6 +36,8 @@ No modules.
 | [alicloud_route_table_attachment.route_table_attachment_pod_private_b](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/route_table_attachment) | resource |
 | [alicloud_route_table_attachment.route_table_attachment_worker_private_a](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/route_table_attachment) | resource |
 | [alicloud_route_table_attachment.route_table_attachment_worker_private_b](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/route_table_attachment) | resource |
+| [alicloud_snat_entry.alicloud_snat_a](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/snat_entry) | resource |
+| [alicloud_snat_entry.alicloud_snat_b](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/snat_entry) | resource |
 | [alicloud_vpc.vpc](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/vpc) | resource |
 | [alicloud_vswitch.vswitch_pod_private_a](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/vswitch) | resource |
 | [alicloud_vswitch.vswitch_pod_private_b](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/vswitch) | resource |
@@ -55,12 +62,16 @@ No modules.
 | <a name="input_ack_node_pool_tags_a"></a> [ack\_node\_pool\_tags\_a](#input\_ack\_node\_pool\_tags\_a) | Map of tags to assign to the resource. Zone A | `map(string)` | n/a | yes |
 | <a name="input_ack_node_pool_type_a"></a> [ack\_node\_pool\_type\_a](#input\_ack\_node\_pool\_type\_a) | Instance classification, not required. Vaild value: cpu, gpu, gpushare and spot. Default: cpu. Zone A | `string` | n/a | yes |
 | <a name="input_ack_ssh_key_name_a"></a> [ack\_ssh\_key\_name\_a](#input\_ack\_ssh\_key\_name\_a) | The keypair of ssh login cluster node, you have to create it first.  Zone A | `string` | n/a | yes |
+| <a name="input_ack_ssh_key_tags_a"></a> [ack\_ssh\_key\_tags\_a](#input\_ack\_ssh\_key\_tags\_a) | A mapping of tags to assign to the ssh keypair. Zone A | `map(string)` | n/a | yes |
 | <a name="input_ack_tags"></a> [ack\_tags](#input\_ack\_tags) | A map of tags assigned to the kubernetes cluster and work nodes. | `map(string)` | n/a | yes |
 | <a name="input_ack_worker_count"></a> [ack\_worker\_count](#input\_ack\_worker\_count) | The worker node number of the kubernetes cluster. | `number` | n/a | yes |
 | <a name="input_ack_worker_instance_types"></a> [ack\_worker\_instance\_types](#input\_ack\_worker\_instance\_types) | The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. | `list(string)` | n/a | yes |
+| <a name="input_eip_nat_name_a"></a> [eip\_nat\_name\_a](#input\_eip\_nat\_name\_a) | Name of the NAT gateway EIP, zone a | `string` | n/a | yes |
+| <a name="input_eip_nat_name_b"></a> [eip\_nat\_name\_b](#input\_eip\_nat\_name\_b) | Name of the NAT gateway EIP, zone b | `string` | n/a | yes |
+| <a name="input_eip_nat_tags_a"></a> [eip\_nat\_tags\_a](#input\_eip\_nat\_tags\_a) | A mapping of tags to assign to NAT gateway EIP, zone a | `map(string)` | n/a | yes |
+| <a name="input_eip_nat_tags_b"></a> [eip\_nat\_tags\_b](#input\_eip\_nat\_tags\_b) | A mapping of tags to assign to the NAT gateway EIP, zone b | `map(string)` | n/a | yes |
 | <a name="input_nat_name_a"></a> [nat\_name\_a](#input\_nat\_name\_a) | Name of the nat gateway, zone a | `string` | n/a | yes |
 | <a name="input_nat_name_b"></a> [nat\_name\_b](#input\_nat\_name\_b) | Name of the nat gateway, zone b | `string` | n/a | yes |
-| <a name="input_nat_size"></a> [nat\_size](#input\_nat\_size) | The size of the nat gateway | `string` | n/a | yes |
 | <a name="input_nat_tags_a"></a> [nat\_tags\_a](#input\_nat\_tags\_a) | The tags of NAT gateway, zone a | `map(string)` | n/a | yes |
 | <a name="input_nat_tags_b"></a> [nat\_tags\_b](#input\_nat\_tags\_b) | The tags of NAT gateway, zone b | `map(string)` | n/a | yes |
 | <a name="input_resource_group_display_name"></a> [resource\_group\_display\_name](#input\_resource\_group\_display\_name) | The display name of the resource group. | `string` | n/a | yes |
@@ -71,6 +82,8 @@ No modules.
 | <a name="input_route_table_name_b"></a> [route\_table\_name\_b](#input\_route\_table\_name\_b) | The name of the route table, zone b | `string` | n/a | yes |
 | <a name="input_route_table_tags_a"></a> [route\_table\_tags\_a](#input\_route\_table\_tags\_a) | A mapping of tags to assign to the route table, zone a | `map(string)` | n/a | yes |
 | <a name="input_route_table_tags_b"></a> [route\_table\_tags\_b](#input\_route\_table\_tags\_b) | A mapping of tags to assign to the route table, zone b | `map(string)` | n/a | yes |
+| <a name="input_snat_entry_name_a"></a> [snat\_entry\_name\_a](#input\_snat\_entry\_name\_a) | Name of the SNAT entry, zone a | `string` | n/a | yes |
+| <a name="input_snat_entry_name_b"></a> [snat\_entry\_name\_b](#input\_snat\_entry\_name\_b) | Name of the SNAT entry, zone b | `string` | n/a | yes |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | The CIDR block for the VPC | `string` | n/a | yes |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | The name of the VPC | `string` | n/a | yes |
 | <a name="input_vpc_tags"></a> [vpc\_tags](#input\_vpc\_tags) | A mapping of tags to assign to the VPC | `map(string)` | n/a | yes |
