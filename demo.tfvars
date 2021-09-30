@@ -69,11 +69,11 @@ nat_name_a = "kubeopsskills-ack-quick-start-nat-a"
 nat_name_b = "kubeopsskills-ack-quick-start-nat-b"
 nat_tags_a = {
   "Environment" = "Demo"
-  "Name"        = "kubeopsskills-ack-quick-start-vs-pod-private-b"
+  "Name"        = "kubeopsskills-ack-quick-start-nat-a"
 }
 nat_tags_b = {
   "Environment" = "Demo"
-  "Name"        = "kubeopsskills-ack-quick-start-vs-pod-private-b"
+  "Name"        = "kubeopsskills-ack-quick-start-nat-b"
 }
 
 # SNAT
