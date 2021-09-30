@@ -11,12 +11,13 @@ resource "alicloud_cs_managed_kubernetes" "ack" {
   install_cloud_monitor = true
   cluster_spec          = "ack.pro.small"
   pod_vswitch_ids       = [alicloud_vswitch.vswitch_pod_private_a.id, alicloud_vswitch.vswitch_pod_private_b.id]
+  service_cidr          = "192.168.0.0/16"
   new_nat_gateway       = false
   slb_internet_enabled  = true
   worker_number         = var.ack_worker_count
   worker_instance_types = var.ack_worker_instance_types
   worker_vswitch_ids    = [alicloud_vswitch.vswitch_worker_private_a.id, alicloud_vswitch.vswitch_worker_private_b.id]
-  worker_disk_category  = "cloudssd"
+  worker_disk_category  = "cloud_ssd"
   node_name_mode        = var.ack_node_name_pattern # eg. "kubeops,5,node"
   os_type               = "Linux"
   platform              = "AliyunLinux"
@@ -25,6 +26,11 @@ resource "alicloud_cs_managed_kubernetes" "ack" {
   addons {
     name   = "terway-eniip"
     config = ""
+  }
+
+  addons {
+    name   = "nginx-ingress-controller"
+    config = "{\"IngressSlbNetworkType\":\"internet\"}"
   }
 
 }
@@ -38,7 +44,7 @@ resource "alicloud_cs_kubernetes_node_pool" "ack_node_pool_a" {
   system_disk_category = "cloud_ssd"
   platform             = "AliyunLinux"
   node_name_mode       = var.ack_node_name_pattern # eg. "kubeops,5,node"
-  key_name             = var.ack_ssh_key_name_a
+  key_name             = alicloud_ecs_key_pair.ack_ssh_key_a.id
   management {
     auto_repair      = true
     max_unavailable  = 0
